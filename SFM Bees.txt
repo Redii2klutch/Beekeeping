@@ -1,0 +1,38 @@
+NAME "Beekeeping"
+
+EVERY 20 TICKS DO
+    input "minecraft:glass_bottle" FROM "Dank"
+    output TO each "Hive"
+END
+
+EVERY 20 TICKS DO
+    input fluid:productivebees:honey FROM "Centrifuge"
+    input fluid:productivebees:honey FROM "Heated" NORTH SIDE
+    output fluid:: TO "HoneyPot" TOP SIDE
+END
+
+EVERY 20 TICKS DO
+    input EXCEPT "minecraft:honey_bottle", "bee_cage", "sturdy_bee_cage", "productivebees:configurable_comb" FROM "Hive"
+    output TO each "Centrifuge"
+END
+
+EVERY 20 TICKS DO
+    input "productivebees:configurable_comb" FROM "Hive"
+    output TO "Heated" SOUTH SIDE
+END
+
+EVERY 20 TICKS DO
+    input "minecraft:honey_bottle" FROM "Hive"
+    output TO "Dank"
+END
+
+EVERY 20 TICKS DO
+    input FROM "Centrifuge"
+    input FROM "Heated" NORTH SIDE
+    output TO "Dank"
+END
+
+EVERY 20 TICKS DO
+    input forge_energy:: FROM "Fluxpoint" BOTTOM SIDE
+    output forge_energy:: TO "Centrifuge" NORTH SIDE
+END
